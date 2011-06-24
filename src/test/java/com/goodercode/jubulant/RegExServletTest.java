@@ -34,7 +34,7 @@ public class RegExServletTest {
 
         servlet.doGet(request, response);
 
-        assertThat(response.getContentType(), equalTo("application/json"));
+        assertThat(response.getContentType(), equalTo("text/json"));
     }
 
     @Test
