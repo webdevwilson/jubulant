@@ -65,6 +65,19 @@ public class RegExServletTest {
 
         final JSONObject json = new JSONObject(response.getContentAsString());
         assertThat(json.getBoolean("matches"), is(false));
-        
+
+    }
+
+    @Test
+    public void should_return_invalid_when_invalid_regex() throws Exception {
+        final String r = "a(bcd";
+        request.setParameter("r", r);
+        request.setParameter("f", "");
+        request.setParameter("t", "xyz");
+
+        servlet.doGet(request, response);
+
+        final JSONObject json = new JSONObject(response.getContentAsString());
+        assertThat(json.getBoolean("invalid"), is(true));
     }
 }

@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -36,6 +37,8 @@ public class RegExServlet extends HttpServlet {
             jsonMe.put("groups", "[" + groups.toString().substring(0, groups.length() - 1) + "]");
         } catch (final IllegalStateException e) {
             jsonMe.put("matches", toJson(false));
+        } catch (final PatternSyntaxException e) {
+            jsonMe.put("invalid", toJson(true));
         }
 
         response.setContentType("application/json");
