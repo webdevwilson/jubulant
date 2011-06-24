@@ -1,1 +1,9 @@
-jugular is a java implementation of the regular expression tester located at http://rubular.com
+jubulant is a java implementation of the regular expression tester located at http://rubular.com
+
+This app is designed to run in Google App Engine.
+
+To run:
+1. Download Google App Engine SDK from http://code.google.com/appengine/downloads.html
+2. Set path to SDK in pom.xml
+3. Run 'mvn gae:run'
+4. Go to http://localhost:8080/
