@@ -23,7 +23,7 @@ $(function() {
     var display = function(data) {
         var h = '';
         if(!data.invalid) {
-            h='<b>Matches:</b>' + (data.matches ? 'Yep' : 'Nope');
+            h='<b>Matches:</b>' + data.matches;
             if(data.matches && data.groups) {
                 h += '<p><b>Groups:</b><ul>';
                 for(var i=0; i<data.groups.length;i++) {
