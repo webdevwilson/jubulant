@@ -7,3 +7,7 @@ To run:
 2. Set path to SDK in pom.xml
 3. Run 'mvn gae:run'
 4. Go to http://localhost:8080/
+
+or...
+
+go to http://jubulant.appspot.com/
