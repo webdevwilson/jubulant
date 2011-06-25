@@ -38,5 +38,15 @@ $(function() {
    
     r.keyup(exec);
     t.keyup(exec);
+    
+    $('#cheatsheet h2 a').click(function() {
+        if($(this).text() == 'Show') {
+            $('#cheatsheet table').slideDown(); 
+            $(this).text('Hide');
+        } else {
+            $('#cheatsheet table').slideUp(); 
+            $(this).text('Show');
+        }
+    });
    
 });

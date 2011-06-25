@@ -1,6 +1,22 @@
 @import 'http://fonts.googleapis.com/css?family=Maven+Pro&v1';
-body { font-family: 'Maven Pro', arial, serif; }
+body { margin: 0; padding: 0; font-family: 'Maven Pro', arial, serif; background-color: #18293b; color: #f2dea1; }
 
+a:link,
+a:visited,
+a:hover { color: #f2dea1; }
+a:hover { text-decoration: none; }
+
+#frame { width: 1000px; margin: 0 auto; }
+#header { text-align: center; }
 #form { float: left; }
-#results { float: right; }
+#results { float: left; margin-top: 32px; margin-left: 10px; }
+#cheatsheet { clear: both; }
+#cheatsheet h2 a:link { font-size: .5em; }
+#footer { clear: both; background-color: #d0b580; padding: 5px; color: #5b5a56;  }
+#footer a:link,
+#footer a:hover,
+#footer a:visited { color: #5b5a56; }
+#footer img { float: right; margin-top: 40px; margin-right: 20px; }
             
+input, textarea { font-size: 2em; border-width: 0; width: 600px; }
+textarea { height: 150px; }
