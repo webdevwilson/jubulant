@@ -25,17 +25,26 @@
                 <h1>jubulant</h1>
                 <p>a regular expression test tool for java</p>
             </div>
+            <h2>regular expression:</h2>
+            <input type="text" name="r" />
             <div id="form">
-                <h2>Regular Expression:</h2>
-                <input type="text" name="r" />
-                <h2>Test:</h2>
+                <h2>flags:</h2>
+                <ul>
+                    <li data-flag="c">canonical equivalence</li>
+                    <li data-flag="i">case insensitive</li>
+                    <li data-flag="a">comments</li>
+                    <li data-flag="d">dotall</li>
+                    <li data-flag="t">literal</li>
+                    <li data-flag="m">multiline</li>
+                    <li data-flag="u">unicode case</li>
+                    <li data-flag="l">unix lines</li>
+                </ul>
+                <h2>test:</h2>
                 <textarea name="t"></textarea>
             </div>
-            <div id="results">
-
-            </div>
+            <div id="results" style="display: none;"></div>
             <div id="cheatsheet">
-                <h2>Cheatsheet <a href="#show">Show</a></h2>
+                <h2>cheatsheet <a href="#show">Show</a></h2>
                 <table style="display: none;">
                     <tr><td colspan="2"><h3>Characters</h3></td></tr>
                     <tr><td>x</td><td>The character x</td></tr>

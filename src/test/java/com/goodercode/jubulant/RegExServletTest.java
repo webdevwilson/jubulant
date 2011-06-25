@@ -48,7 +48,6 @@ public class RegExServletTest {
         servlet.doGet(request, response);
 
         final JSONObject json = new JSONObject(response.getContentAsString());
-        assertThat(json.getString("regex"), equalTo(r));
         assertThat(json.getBoolean("matches"), is(true));
         assertThat(json.getJSONArray("groups").length(), equalTo(2));
 
@@ -79,5 +78,35 @@ public class RegExServletTest {
 
         final JSONObject json = new JSONObject(response.getContentAsString());
         assertThat(json.getBoolean("invalid"), is(true));
+    }
+
+    @Test
+    public void should_add_flags_to_Pattern() throws Exception {
+
+        final String r = "abc";
+        request.setParameter("r", r);
+        request.setParameter("f", "i");
+        request.setParameter("t", "AbC");
+
+        servlet.doGet(request, response);
+
+        final JSONObject json = new JSONObject(response.getContentAsString());
+        assertThat(json.getBoolean("matches"), is(true));
+
+    }
+
+    @Test
+    public void should_add_multiple_flags_to_Pattern() throws Exception {
+
+        final String r = ".*c.+d.*";
+        request.setParameter("r", r);
+        request.setParameter("f", "id");
+        request.setParameter("t", "abc\r\ndef");
+
+        servlet.doGet(request, response);
+
+        final JSONObject json = new JSONObject(response.getContentAsString());
+        assertThat(json.getBoolean("matches"), is(true));
+
     }
 }

@@ -1,8 +1,6 @@
 package com.goodercode.jubulant;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
@@ -10,6 +8,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class RegExServlet extends HttpServlet {
 
@@ -18,46 +18,51 @@ public class RegExServlet extends HttpServlet {
             final HttpServletResponse response) throws ServletException, IOException {
 
         final String regex = request.getParameter("r");
-        final String flags = request.getParameter("f");
+        final Integer flag = getFlag(request.getParameter("f"));
         final String text = request.getParameter("t");
 
-        final Map<String, String> jsonMe = new HashMap<String, String>();
+        final JSONObject jsonMe = new JSONObject();
 
         try {
-            final Matcher m = Pattern.compile(regex).matcher(text);
+            try {
+                final Matcher m = Pattern.compile(regex, flag).matcher(text);
 
+                jsonMe.put("matches", m.matches());
 
-            jsonMe.put("matches", toJson(Boolean.valueOf(m.matches())));
-            jsonMe.put("regex", toJson(regex));
-
-            final StringBuilder groups = new StringBuilder();
-            for (Integer i = 0; i <= m.groupCount(); i++) {
-                groups.append(toJson(m.group(i))).append(",");
+                final String[] groups = new String[m.groupCount() + 1];
+                for (Integer i = 0; i <= m.groupCount(); i++) {
+                    groups[i] = m.group(i);
+                }
+                jsonMe.put("groups", groups);
+            } catch (final IllegalStateException e) {
+                jsonMe.put("matches", false);
+            } catch (final PatternSyntaxException e) {
+                jsonMe.put("invalid", true);
             }
-            jsonMe.put("groups", "[" + groups.toString().substring(0, groups.length() - 1) + "]");
-        } catch (final IllegalStateException e) {
-            jsonMe.put("matches", toJson(Boolean.FALSE));
-        } catch (final PatternSyntaxException e) {
-            jsonMe.put("invalid", toJson(Boolean.TRUE));
+        } catch (final JSONException je) {
+            throw new ServletException(je);
         }
-
+        
         response.setContentType("text/json");
-
-        // output to response
-        final StringBuilder output = new StringBuilder();
-        for (final String key : jsonMe.keySet()) {
-            output.append("'").append(key).append("': ").append(jsonMe.get(key)).append(",");
-        }
-        response.getWriter().write("{" + output.toString().substring(0, output.length() - 1) + "}");
-        response.getWriter().flush();
+        response.getWriter().write(jsonMe.toString());
 
     }
 
-    private String toJson(final Object obj) {
-        String str = obj.toString();
-        if(!Number.class.isAssignableFrom(obj.getClass()) && !(obj instanceof Boolean)) {
-            str = str.replace("'", "\\'");
+    private Integer getFlag(final String flags) {
+
+        if (flags == null) {
+            return 0;
         }
-        return "'" + str + "'";
+
+        Integer flag = 0;
+        flag |= flags.contains("c") ? Pattern.CANON_EQ : 0;
+        flag |= flags.contains("i") ? Pattern.CASE_INSENSITIVE : 0;
+        flag |= flags.contains("a") ? Pattern.COMMENTS : 0;
+        flag |= flags.contains("d") ? Pattern.DOTALL : 0;
+        flag |= flags.contains("t") ? Pattern.LITERAL : 0;
+        flag |= flags.contains("m") ? Pattern.MULTILINE : 0;
+        flag |= flags.contains("u") ? Pattern.UNICODE_CASE : 0;
+        flag |= flags.contains("l") ? Pattern.UNIX_LINES : 0;
+        return flag;
     }
 }

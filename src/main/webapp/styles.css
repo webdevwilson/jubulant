@@ -6,10 +6,18 @@ a:visited,
 a:hover { color: #f2dea1; }
 a:hover { text-decoration: none; }
 
+h1, h2 { clear: both; margin: 8px 0; color: #fffbff; }
+
 #frame { width: 1000px; margin: 0 auto; }
 #header { text-align: center; }
 #form { float: left; }
-#results { float: left; margin-top: 32px; margin-left: 10px; }
+#form ul { margin: 0; padding: 0; width: 600px; }
+#form ul li { list-style: none; float: left; margin: 2px 2px; padding: 0 4px; cursor: pointer; }
+#form ul li.selected { background-color: #f2dea1; color: #18293b; }
+#form ul li:hover { background-color: #d0b580; color: #18293b; }
+#results { float: right; margin-top: 30px; margin-left: 30px; padding: 25px; min-width: 250px; border-width: 4px; border-style: solid; color: #000; }
+#results.nomatch { background-color: #FDD2D2; border-color: #D37979     ; }
+#results.match { background-color: #CDF3C9; border-color: #779A73; }
 #cheatsheet { clear: both; }
 #cheatsheet h2 a:link { font-size: .5em; }
 #footer { clear: both; background-color: #d0b580; padding: 5px; color: #5b5a56;  }
@@ -18,5 +26,5 @@ a:hover { text-decoration: none; }
 #footer a:visited { color: #5b5a56; }
 #footer img { float: right; margin-top: 40px; margin-right: 20px; }
             
-input, textarea { font-size: 2em; border-width: 0; width: 600px; }
-textarea { height: 150px; }
+input { font-size: 2.5em; width: 992px; background-color: #f2dea1; color: #5b5a56; border: 4px solid #d0b580; }
+textarea { font-size: 2em; border-width: 0; width: 600px; height: 150px; background-color: #f2dea1; color: #5b5a56; border: 4px solid #d0b580; }
