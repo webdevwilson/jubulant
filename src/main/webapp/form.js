@@ -8,16 +8,20 @@ $(function() {
         display(a);
     });
    
+   var to;
     var exec=function() {
         var rv=r.val();
         var tv=t.val();
-        $.getJSON('execute', {
-            'r':rv, 
-            't': tv, 
-            'f': 'a'
-        }, function(data) {
-            display(data);
-        });
+        window.clearTimeout(to);
+        to=window.setTimeout(function() {
+            $.getJSON('execute', {
+                'r':rv, 
+                't': tv, 
+                'f': 'a'
+            }, function(data) {
+                display(data);
+            });
+        }, 250);
     };
    
     var display = function(data) {
