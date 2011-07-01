@@ -1,5 +1,8 @@
 @import 'http://fonts.googleapis.com/css?family=Maven+Pro&v1';
-body { margin: 0; padding: 0; font-family: 'Maven Pro', arial, serif; background-color: #18293b; color: #f2dea1; }
+
+* { margin: 0; }
+
+html, body { height: 100%; margin: 0; padding: 0; font-family: 'Maven Pro', arial, serif; background-color: #18293b; color: #f2dea1; }
 
 a:link,
 a:visited,
@@ -8,7 +11,7 @@ a:hover { text-decoration: none; }
 
 h1, h2 { clear: both; margin: 8px 0; color: #fffbff; }
 
-#frame { width: 1000px; margin: 0 auto; }
+#frame { width: 1000px; min-height: 100%; height: auto !important; height: 100%; margin: 0 auto -5em; }
 #header { text-align: center; }
 #form { float: left; }
 #form ul { margin: 0; padding: 0; width: 600px; }
@@ -20,7 +23,8 @@ h1, h2 { clear: both; margin: 8px 0; color: #fffbff; }
 #results.match { background-color: #CDF3C9; border-color: #779A73; }
 #cheatsheet { clear: both; }
 #cheatsheet h2 a:link { font-size: .5em; }
-#footer { clear: both; background-color: #d0b580; padding: 5px; color: #5b5a56;  }
+#push { height: 5em; }
+#footer { clear: both; background-color: #d0b580; padding: 5px; color: #5b5a56; height: 5em;  }
 #footer a:link,
 #footer a:hover,
 #footer a:visited { color: #5b5a56; }

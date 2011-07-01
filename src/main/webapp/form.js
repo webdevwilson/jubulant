@@ -22,12 +22,12 @@ $(function() {
                 't': tv, 
                 'f': fv
             }, function(data) {
-                display(data);
+                display(rv,fv,tv,data);
             });
         }, 250);
     };
    
-    var display = function(data) {
+    var display = function(r,f,t,data) {
         var h = '';
         if(!data.invalid) {
             h='<b>Matches:</b>' + data.matches;
@@ -38,6 +38,12 @@ $(function() {
                 }
                 h+='</ul>';
             }
+            h+='<h3>Code:</h3><pre>';
+            h+='import java.util.regex.Pattern;\n'
+            h+='import java.util.regex.Matcher;\n\n'
+            h+='final Pattern pattern = Pattern.compile("'+r+'");\n';
+            h+='final Matcher matcher = pattern.matcher("'+t+'");';
+            h+='</pre>';
         }
         var ar = data.matches && data.groups ? ['match','nomatch'] : ['nomatch','match'];
         if(h=='') $('#results').hide();
