@@ -26,6 +26,10 @@ $(function() {
             });
         }, 250);
     };
+    
+    var escape = function(str) {
+        return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    };
    
     var display = function(r,f,t,data) {
         var h = '';
@@ -34,15 +38,15 @@ $(function() {
             if(data.matches && data.groups) {
                 h += '<p><b>Groups:</b><ul>';
                 for(var i=0; i<data.groups.length;i++) {
-                    h += '<li>'+data.groups[i]+'</li>';
+                    h += '<li>'+escape(data.groups[i])+'</li>';
                 }
                 h+='</ul>';
             }
             h+='<h3>Code:</h3><pre>';
             h+='import java.util.regex.Pattern;\n'
             h+='import java.util.regex.Matcher;\n\n'
-            h+='final Pattern pattern = Pattern.compile("'+r+'");\n';
-            h+='final Matcher matcher = pattern.matcher("'+t+'");';
+            h+='final Pattern pattern = Pattern.compile("'+escape(r)+'");\n';
+            h+='final Matcher matcher = pattern.matcher("'+escape(t)+'");';
             h+='</pre>';
         }
         var ar = data.matches && data.groups ? ['match','nomatch'] : ['nomatch','match'];
