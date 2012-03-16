@@ -13,7 +13,7 @@
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <appengine.sdk.root>C:\Program Files\appengine-java-sdk-1.5.1</appengine.sdk.root>
+        <appengine.sdk.root>${user.home}/bin/appengine-java-sdk/current</appengine.sdk.root>
     </properties>
 
     <dependencies>
