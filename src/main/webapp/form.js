@@ -47,7 +47,7 @@ $(function() {
         }
         var ar = data.matches && data.groups ? ['match','nomatch'] : ['nomatch','match'];
         if(h=='') $('#results').hide();
-        else $('#results').html(h).addClass(ar[0]).removeClass(ar[1]).show();
+        else $('#results #matches').html(h).addClass(ar[0]).removeClass(ar[1]).parent().show();
     };
    
     r.keyup(exec);
