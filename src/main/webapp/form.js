@@ -1,7 +1,7 @@
 $(function() {
    
     var r=$('input[type="text"][name="r"]');
-    var t=$('textarea[name="t"]');
+    var t=$('input[name="t"]');
     
     // this is a hack, for some reason jquery is having issues eval'ing the json
     // we return
@@ -59,12 +59,22 @@ $(function() {
     
     // handle flag selectors
     $('#form ul li').click(function() {
-        if($(this).hasClass('selected')) {
-            $(this).removeClass('selected');
+	var t=$(this);
+        if(t.hasClass('selected')) {
+            t.removeClass('selected');
         } else {
-            $(this).addClass('selected');
+            t.addClass('selected');
         }
-        exec();
+	exec();
+    });
+    
+    // swap input for textarea when multiline is selected
+    $('#form ul li[data-flag="m"]').click(function() {
+	var n,v=t.val(),m=$(this).hasClass('selected');
+	n= m ? $('<textarea>', { 'name': t.attr('name') }).val(v) : 
+	    $('<input>', { 'type': 'text', 'name': t.attr('name'), 'value': v });
+	t.replaceWith(n);
+	t=n;
     });
     
     // show / hide cheatsheet
