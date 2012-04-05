@@ -37,7 +37,9 @@ public class RegExServlet extends HttpServlet {
             } catch (final IllegalStateException e) {
                 jsonMe.put("matches", false);
             } catch (final PatternSyntaxException e) {
-                jsonMe.put("invalid", true);
+		jsonMe.put("matches", false);  
+		jsonMe.put("invalid", true);
+		jsonMe.put("description", e.getDescription());
             }
         } catch (final JSONException je) {
             throw new ServletException(je);
