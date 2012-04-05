@@ -22,6 +22,9 @@ h1, h2 { clear: both; margin: 8px 0; color: #fffbff; }
 #results #matches.match { background-color: #CDF3C9; border-color: #779A73; }
 #cheatsheet { clear: both; }
 #cheatsheet h2 a:link { font-size: .5em; }
+#cheatsheet h3 a:link { font-size: .7em; }
+#cheatsheet div { margin-left: 15px; }
+#cheatsheet td { color: #fff; }
 #push { height: 5em; }
 #footer { background-color: #d0b580; padding: 5px; color: #5b5a56; height: 5em; position: absolute; bottom: 0; left: 0; right: 0; }
 #footer a:link,

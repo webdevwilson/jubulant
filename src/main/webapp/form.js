@@ -29,7 +29,7 @@ $(function() {
     },
     exec=function() {
         var rv=r.val(), 
-	tv=t.val(), 
+	tv=t.val(),
 	fv=$('#form ul li.selected').map(function() {return $(this).data('flag'); }).toArray().join('');
         window.clearTimeout(to);
         to=window.setTimeout(function() {
@@ -67,14 +67,16 @@ $(function() {
     });
     
     // show / hide cheatsheet
-    $('#cheatsheet h2 a').click(function() {
-        if($(this).text() === 'Show') {
-            $('#cheatsheet table').slideDown(); 
-            $(this).text('Hide');
+    $('#cheatsheet h2 a, #cheatsheet h3 a').click(function() {
+	var t=$(this).parent().next();
+        if($(this).text() === 'show') {
+            t.slideDown(); 
+            $(this).text('hide');
         } else {
-            $('#cheatsheet table').slideUp(); 
-            $(this).text('Show');
+            t.slideUp(); 
+            $(this).text('show');
         }
+	return false;
     });
    
 });
