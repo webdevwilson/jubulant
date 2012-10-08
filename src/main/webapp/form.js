@@ -24,7 +24,7 @@ $(function() {
             h+='final Matcher matcher = pattern.matcher("'+escape(t)+'");';
             h+='</pre>';
         } else {
-	    h='Invalid pattern \''+data.description+'\'';
+	    h='<strong>Invalid pattern:</strong> \''+data.description+'\'';
 	}
         if(h==='') { $('#results').hide(); }
         else { $('#results #matches').html(h).addClass(ar[0]).removeClass(ar[1]).parent().show();}
