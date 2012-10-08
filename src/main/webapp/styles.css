@@ -13,6 +13,7 @@ h1, h2 { clear: both; margin: 8px 0; color: #fffbff; }
 
 #frame { padding: 0 10%; width: 80%; position: absolute; top: 0; bottom: 5em; left: 0; right: 0; overflow-y: auto; }
 #header { text-align: center; }
+#header h1 span { vertical-align: sub; font-size: .4em; }
 #form ul { margin: 0; padding: 0; width: 600px; }
 #form ul li { list-style: none; float: left; margin: 2px 2px; padding: 0 4px; cursor: pointer; }
 #form ul li.selected { background-color: #f2dea1; color: #18293b; }
