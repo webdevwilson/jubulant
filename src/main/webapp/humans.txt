@@ -1,0 +1,5 @@
+kerry r wilson
+location: nashville, tn
+twitter: @webdevwilson
+github: http://github.com/webdevwilson
+blog: http://goodercode.com
