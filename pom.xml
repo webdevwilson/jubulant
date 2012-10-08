@@ -5,7 +5,7 @@
 
     <groupId>com.goodercode</groupId>
     <artifactId>jubulant</artifactId>
-    <version>5</version>
+    <version>6</version>
     <packaging>war</packaging>
 
     <name>jubulant</name>
@@ -102,7 +102,7 @@
 	    <plugin>
 		<groupId>net.kindleit</groupId>
 		<artifactId>maven-gae-plugin</artifactId>
-		<version>0.8.4</version>
+		<version>0.9.4</version>
 		<configuration>
 		    <serverId>appengine.google.com</serverId>
 		    <sdkDir>${appengine.sdk.root}</sdkDir>
