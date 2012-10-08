@@ -2,8 +2,11 @@ $(function() {
    
     var r=$('input[type="text"][name="r"]'), 
     t=$('input[name="t"]'), to, 
-    escape = function(str) {
+    escapeHTML = function(str) {
         return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    },
+    escapeJavaString = function(str) {
+	return escapeHTML(str).replace(/\\/, "\\\\");
     },
     display = function(r,f,t,data) {
         var i,h = '', 
@@ -13,15 +16,15 @@ $(function() {
             if(data.matches && data.groups) {
                 h += '<p><b>Groups:</b><ul>';
                 for(i=0; i<data.groups.length;i++) {
-                    h += '<li>'+escape(data.groups[i])+'</li>';
+                    h += '<li>'+escapeHTML(data.groups[i])+'</li>';
                 }
                 h+='</ul>';
             }
             h+='<h3>Code:</h3><pre>';
             h+='import java.util.regex.Pattern;\n';
             h+='import java.util.regex.Matcher;\n\n';
-            h+='final Pattern pattern = Pattern.compile("'+escape(r)+'");\n';
-            h+='final Matcher matcher = pattern.matcher("'+escape(t)+'");';
+            h+='final Pattern pattern = Pattern.compile("'+escapeJavaString(r)+'");\n';
+            h+='final Matcher matcher = pattern.matcher("'+escapeJavaString(t)+'");';
             h+='</pre>';
         } else {
 	    h='<strong>Invalid pattern:</strong> \''+data.description+'\'';
@@ -80,5 +83,4 @@ $(function() {
         }
 	return false;
     });
-   
 });
